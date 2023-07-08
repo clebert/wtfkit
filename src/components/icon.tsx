@@ -30,6 +30,7 @@ import {
 import * as React from 'react';
 
 export interface IconProps {
+  className?: string;
   type: keyof typeof pathByType;
   standalone?: boolean;
 }
@@ -65,9 +66,11 @@ const pathByType = {
   xMark: <XMarkIcon className={iconHeightWidth} />,
 } as const;
 
-export function Icon({type, standalone}: IconProps): JSX.Element {
+export function Icon({className, type, standalone}: IconProps): JSX.Element {
   return (
-    <div className={joinClassNames(`inline-flex h-5 align-middle`, !standalone && `mr-1`)}>
+    <div
+      className={joinClassNames(className, `inline-flex h-5 align-middle`, !standalone && `mr-1`)}
+    >
       {pathByType[type]}
     </div>
   );

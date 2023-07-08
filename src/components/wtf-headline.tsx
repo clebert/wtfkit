@@ -1,12 +1,19 @@
+import {joinClassNames} from '../index.js';
 import * as React from 'react';
 
 export interface WtfHeadlineProps {
+  className?: string;
   subdomainName: string;
 }
 
-export function WtfHeadline({subdomainName}: WtfHeadlineProps): JSX.Element {
+export function WtfHeadline({className, subdomainName}: WtfHeadlineProps): JSX.Element {
   return (
-    <h1 className="mr-2 cursor-default select-none whitespace-nowrap text-3xl font-bold">
+    <h1
+      className={joinClassNames(
+        className,
+        `mr-2 cursor-default select-none whitespace-nowrap text-3xl font-bold`,
+      )}
+    >
       <span className="text-black dark:text-white">{subdomainName}.</span>
       <span className="text-red-800 dark:text-red-200">w</span>
       <span className="text-emerald-800 dark:text-emerald-200">t</span>
