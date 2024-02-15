@@ -1,8 +1,8 @@
-import {joinClassNames} from '../utils/join-class-names.js';
+import * as React from 'react';
 import {
   AdjustmentsHorizontalIcon,
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
+  ArrowLeftEndOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
   ArrowUturnLeftIcon,
   BarsArrowDownIcon,
@@ -27,7 +27,7 @@ import {
   UserIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import * as React from 'react';
+import { joinClassNames } from '../utils/join-class-names.js';
 
 export interface IconProps {
   className?: string | undefined;
@@ -39,8 +39,8 @@ const iconHeightWidth = `h-4 w-4`;
 
 const pathByType = {
   adjustmentsHorizontal: <AdjustmentsHorizontalIcon className={iconHeightWidth} />,
-  arrowLeftOnRectangle: <ArrowLeftOnRectangleIcon className={iconHeightWidth} />,
-  arrowRightOnRectangle: <ArrowRightOnRectangleIcon className={iconHeightWidth} />,
+  arrowLeftEndOnRectangle: <ArrowLeftEndOnRectangleIcon className={iconHeightWidth} />,
+  arrowRightStartOnRectangle: <ArrowRightStartOnRectangleIcon className={iconHeightWidth} />,
   arrowTopRightOnSquare: <ArrowTopRightOnSquareIcon className={iconHeightWidth} />,
   arrowUturnLeft: <ArrowUturnLeftIcon className={iconHeightWidth} />,
   barsArrowDown: <BarsArrowDownIcon className={iconHeightWidth} />,
@@ -66,7 +66,7 @@ const pathByType = {
   xMark: <XMarkIcon className={iconHeightWidth} />,
 } as const;
 
-export function Icon({className, type, standalone}: IconProps): JSX.Element {
+export function Icon({ className, type, standalone }: IconProps): JSX.Element {
   return (
     <div
       className={joinClassNames(className, `inline-flex h-5 align-middle`, !standalone && `mr-1`)}
