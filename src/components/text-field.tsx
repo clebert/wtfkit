@@ -10,7 +10,7 @@ export interface TextFieldProps {
   disabled?: boolean | undefined;
   required?: boolean | undefined;
 
-  onInput(value: string): void;
+  onInput: (value: string) => void;
 }
 
 export const TextField = React.forwardRef(

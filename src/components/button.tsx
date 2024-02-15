@@ -9,7 +9,7 @@ export interface ButtonProps extends React.PropsWithChildren {
   disabled?: boolean | undefined;
   inverted?: boolean | undefined;
 
-  onClick?(): void;
+  onClick?: () => void | undefined;
 }
 
 export function Button({
