@@ -1,16 +1,16 @@
-import {joinClassNames} from '../utils/join-class-names.js';
 import * as React from 'react';
+import { joinClassNames } from '../utils/join-class-names.js';
 
 export interface ContainerProps extends React.PropsWithChildren {
-  className?: string;
-  center?: boolean;
-  col?: boolean;
-  grow?: boolean;
+  className?: string | undefined;
+  center?: boolean | undefined;
+  col?: boolean | undefined;
+  grow?: boolean | undefined;
 }
 
 export const Container = React.forwardRef(
   (
-    {children, className, center, col, grow}: ContainerProps,
+    { children, className, center, col, grow }: ContainerProps,
     ref: React.ForwardedRef<HTMLDivElement>,
   ): JSX.Element => {
     return (

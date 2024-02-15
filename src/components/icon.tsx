@@ -30,9 +30,9 @@ import {
 import * as React from 'react';
 
 export interface IconProps {
-  className?: string;
+  className?: string | undefined;
   type: keyof typeof pathByType;
-  standalone?: boolean;
+  standalone?: boolean | undefined;
 }
 
 const iconHeightWidth = `h-4 w-4`;

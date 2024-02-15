@@ -1,13 +1,13 @@
-import {Styles} from '../styles.js';
-import {joinClassNames} from '../utils/join-class-names.js';
 import * as React from 'react';
+import { Styles } from '../styles.js';
+import { joinClassNames } from '../utils/join-class-names.js';
 
 export interface ButtonProps extends React.PropsWithChildren {
-  className?: string;
-  type?: 'button' | 'submit';
+  className?: string | undefined;
+  type?: 'button' | 'submit' | undefined;
   title: string;
-  disabled?: boolean;
-  inverted?: boolean;
+  disabled?: boolean | undefined;
+  inverted?: boolean | undefined;
 
   onClick?(): void;
 }
@@ -30,12 +30,12 @@ export function Button({
         className,
         `select-none whitespace-nowrap px-2`,
         !enabled && `cursor-default opacity-25`,
-        styles.background({inverted}),
-        enabled && styles.activeBackground({inverted}),
+        styles.background({ inverted }),
+        enabled && styles.activeBackground({ inverted }),
         styles.border(),
         styles.focus(),
-        styles.text({inverted}),
-        enabled && styles.activeText({inverted}),
+        styles.text({ inverted }),
+        enabled && styles.activeText({ inverted }),
       )}
       type={type}
       title={title}

@@ -1,12 +1,12 @@
-import {joinClassNames} from '../index.js';
 import * as React from 'react';
+import { joinClassNames } from '../mod.js';
 
 export interface WtfHeadlineProps {
-  className?: string;
+  className?: string | undefined;
   subdomainName: string;
 }
 
-export function WtfHeadline({className, subdomainName}: WtfHeadlineProps): JSX.Element {
+export function WtfHeadline({ className, subdomainName }: WtfHeadlineProps): JSX.Element {
   return (
     <h1
       className={joinClassNames(

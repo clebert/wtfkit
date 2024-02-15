@@ -1,7 +1,6 @@
-import type {z} from 'zod';
-
-import {deserializeJson} from './deserialize-json.js';
-import {serializeJson} from './serialize-json.js';
+import { deserializeJson } from './deserialize-json.js';
+import { serializeJson } from './serialize-json.js';
+import type { z } from 'zod';
 
 export interface Accessor<TValue> {
   get value(): TValue | undefined;

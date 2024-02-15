@@ -1,14 +1,14 @@
-import {useDarkMode} from '../hooks/use-dark-mode.js';
-import {joinClassNames} from '../index.js';
-import {Styles} from '../styles.js';
 import * as React from 'react';
+import { Styles } from '../styles.js';
+import { joinClassNames } from '../mod.js';
+import { useDarkMode } from '../hooks/use-dark-mode.js';
 
 export interface PageProps extends React.PropsWithChildren {
-  className?: string;
+  className?: string | undefined;
   styles: Styles;
 }
 
-export function Page({children, className, styles}: PageProps): JSX.Element {
+export function Page({ children, className, styles }: PageProps): JSX.Element {
   React.useLayoutEffect(() => {
     const classNames = styles.background().split(` `);
 

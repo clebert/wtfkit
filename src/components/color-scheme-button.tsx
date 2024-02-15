@@ -1,18 +1,18 @@
-import {Button} from './button.js';
-import {Icon} from './icon.js';
-import {joinClassNames} from '../index.js';
-import {colorSchemeMachine} from '../machines/color-scheme-machine.js';
 import * as React from 'react';
+import { Button } from './button.js';
+import { Icon } from './icon.js';
+import { colorSchemeMachine } from '../machines/color-scheme-machine.js';
+import { joinClassNames } from '../mod.js';
 
 export interface ColorSchemeButtonProps {
-  className?: string;
+  className?: string | undefined;
 }
 
-const titles = {isSystem: `System Theme`, isLight: `Day Theme`, isDark: `Night Theme`};
-const iconTypes = {isSystem: `computerDesktop`, isLight: `sun`, isDark: `moon`} as const;
+const titles = { isSystem: `System Theme`, isLight: `Day Theme`, isDark: `Night Theme` };
+const iconTypes = { isSystem: `computerDesktop`, isLight: `sun`, isDark: `moon` } as const;
 
-export function ColorSchemeButton({className}: ColorSchemeButtonProps): JSX.Element {
-  const {state: colorScheme} = React.useSyncExternalStore(colorSchemeMachine.subscribe, () =>
+export function ColorSchemeButton({ className }: ColorSchemeButtonProps): JSX.Element {
+  const { state: colorScheme } = React.useSyncExternalStore(colorSchemeMachine.subscribe, () =>
     colorSchemeMachine.get(),
   );
 

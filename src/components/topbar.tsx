@@ -1,11 +1,11 @@
-import {joinClassNames} from '../index.js';
 import * as React from 'react';
+import { joinClassNames } from '../mod.js';
 
 export interface TopbarProps extends React.PropsWithChildren {
-  className?: string;
+  className?: string | undefined;
 }
 
-export function Topbar({children, className}: TopbarProps): JSX.Element {
+export function Topbar({ children, className }: TopbarProps): JSX.Element {
   return (
     <div
       className={joinClassNames(

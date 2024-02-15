@@ -1,21 +1,21 @@
-import {Styles} from '../styles.js';
-import {joinClassNames} from '../utils/join-class-names.js';
 import * as React from 'react';
+import { Styles } from '../styles.js';
+import { joinClassNames } from '../utils/join-class-names.js';
 
 export interface TextFieldProps {
-  className?: string;
-  type?: 'password' | 'text' | 'url';
+  className?: string | undefined;
+  type?: 'password' | 'text' | 'url' | undefined;
   value: string;
-  placeholder?: string;
-  disabled?: boolean;
-  required?: boolean;
+  placeholder?: string | undefined;
+  disabled?: boolean | undefined;
+  required?: boolean | undefined;
 
   onInput(value: string): void;
 }
 
 export const TextField = React.forwardRef(
   (
-    {className, type = `text`, value, placeholder, disabled, required, onInput}: TextFieldProps,
+    { className, type = `text`, value, placeholder, disabled, required, onInput }: TextFieldProps,
     ref: React.ForwardedRef<HTMLInputElement>,
   ): JSX.Element => {
     const handleInput = React.useCallback<React.FormEventHandler<HTMLInputElement>>(
@@ -38,7 +38,7 @@ export const TextField = React.forwardRef(
           styles.background(),
           styles.border(),
           !disabled && styles.focus(),
-          styles.text({placeholder: true}),
+          styles.text({ placeholder: true }),
         )}
         type={type}
         value={value}

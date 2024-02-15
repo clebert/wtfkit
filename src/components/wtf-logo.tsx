@@ -1,12 +1,12 @@
-import {joinClassNames} from '../index.js';
 import * as React from 'react';
+import { joinClassNames } from '../mod.js';
 
 export interface WtfLogoProps {
-  className?: string;
+  className?: string | undefined;
   subdomainName: string;
 }
 
-export function WtfLogo({className, subdomainName}: WtfLogoProps): JSX.Element {
+export function WtfLogo({ className, subdomainName }: WtfLogoProps): JSX.Element {
   return (
     <div className={joinClassNames(className, `flex h-48 w-48 items-center justify-center border`)}>
       <h1 className="text-8xl font-bold">
