@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { Button } from './button.js';
 import { Icon } from './icon.js';
 import { colorSchemeMachine } from '../machines/color-scheme-machine.js';
@@ -9,7 +10,7 @@ export interface ColorSchemeButtonProps {
 }
 
 const titles = { isSystem: `System Theme`, isLight: `Day Theme`, isDark: `Night Theme` };
-const iconTypes = { isSystem: `computerDesktop`, isLight: `sun`, isDark: `moon` } as const;
+const iconTypes = { isSystem: ComputerDesktopIcon, isLight: SunIcon, isDark: MoonIcon } as const;
 
 export function ColorSchemeButton({ className }: ColorSchemeButtonProps): JSX.Element {
   const { state: colorScheme } = React.useSyncExternalStore(colorSchemeMachine.subscribe, () =>
