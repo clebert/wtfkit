@@ -11,7 +11,6 @@ export function Icon({ className, type, standalone }: IconProps): JSX.Element {
 
 export interface IconProps {
   className?: string | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type: React.FunctionComponent<any> | React.ComponentClass<any>;
   standalone?: boolean | undefined;
 }
