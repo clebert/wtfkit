@@ -1,6 +1,6 @@
 {
   "name": "wtfkit",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "A library, featuring reusable React and tailwindcss resources, created for the owner's personal .wtf web app projects.",
   "repository": {
     "type": "git",
