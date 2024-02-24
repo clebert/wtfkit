@@ -10,14 +10,16 @@ export interface TextFieldProps {
   disabled?: boolean | undefined;
   required?: boolean | undefined;
 
+  onBlur?: (() => void) | undefined;
+  onFocus?: (() => void) | undefined;
   onInput: (value: string) => void;
 }
 
 export const TextField = React.forwardRef(
-  (
-    { className, type = `text`, value, placeholder, disabled, required, onInput }: TextFieldProps,
-    ref: React.ForwardedRef<HTMLInputElement>,
-  ): JSX.Element => {
+  (props: TextFieldProps, ref: React.ForwardedRef<HTMLInputElement>): JSX.Element => {
+    const { className, type, value, placeholder, disabled, required, onBlur, onFocus, onInput } =
+      props;
+
     const handleInput = React.useCallback<React.FormEventHandler<HTMLInputElement>>(
       (event) => {
         event.preventDefault();
@@ -40,7 +42,7 @@ export const TextField = React.forwardRef(
           !disabled && styles.focus(),
           styles.text({ placeholder: true }),
         )}
-        type={type}
+        type={type ?? `text`}
         value={value}
         placeholder={placeholder}
         autoComplete="off"
@@ -48,6 +50,8 @@ export const TextField = React.forwardRef(
         disabled={disabled}
         required={required}
         spellCheck={false}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onInput={handleInput}
       />
     );
