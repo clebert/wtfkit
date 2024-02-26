@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Styles } from '../styles.js';
-import { joinClassNames } from '../mod.js';
+import { joinClassNames } from '../utils/join-class-names.js';
 import { useDarkMode } from '../hooks/use-dark-mode.js';
 
 export interface PageProps extends React.PropsWithChildren {

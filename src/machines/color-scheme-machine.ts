@@ -1,29 +1,32 @@
+import type { InferStateUnion } from 'state-guard';
 import { createJsonStorageItem } from '../utils/create-json-storage-item.js';
 import { createMachine } from 'state-guard';
 import { z } from 'zod';
 
+export type ColorScheme = InferStateUnion<typeof colorSchemeMachine>;
+
 const storageItem = createJsonStorageItem(
   `colorScheme`,
-  z.literal(`isLight`).or(z.literal(`isDark`)),
+  z.literal(`system`).or(z.literal(`light`)).or(z.literal(`dark`)),
 );
 
 export const colorSchemeMachine = createMachine({
-  initialState: storageItem.value ?? `isSystem`,
+  initialState: storageItem.value ?? `system`,
   initialValue: undefined,
+
   transformerMap: {
-    isSystem: () => undefined,
-    isLight: () => undefined,
-    isDark: () => undefined,
+    system: () => undefined,
+    light: () => undefined,
+    dark: () => undefined,
   },
+
   transitionsMap: {
-    isSystem: { toggle: `isLight` },
-    isLight: { toggle: `isDark` },
-    isDark: { toggle: `isSystem` },
+    system: { toggle: `light` },
+    light: { toggle: `dark` },
+    dark: { toggle: `system` },
   },
 });
 
 colorSchemeMachine.subscribe(() => {
-  const { state } = colorSchemeMachine.get();
-
-  storageItem.value = state === `isSystem` ? undefined : state;
+  storageItem.value = colorSchemeMachine.get().state;
 });

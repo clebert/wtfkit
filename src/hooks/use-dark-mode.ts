@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { colorSchemeMachine } from '../machines/color-scheme-machine.js';
+import { useColorScheme } from './use-color-scheme.js';
 
 const mediaQuery = window.matchMedia(`(prefers-color-scheme: dark)`);
 
@@ -8,23 +8,14 @@ export function useDarkMode(): boolean {
 
   React.useEffect(() => {
     const abortController = new AbortController();
+    const { signal } = abortController;
 
-    mediaQuery.addEventListener(
-      `change`,
-      () => {
-        setPrefersDark(mediaQuery.matches);
-      },
-      { signal: abortController.signal },
-    );
+    mediaQuery.addEventListener(`change`, () => setPrefersDark(mediaQuery.matches), { signal });
 
-    return () => {
-      abortController.abort();
-    };
+    return () => abortController.abort();
   }, []);
 
-  const { state: colorScheme } = React.useSyncExternalStore(colorSchemeMachine.subscribe, () =>
-    colorSchemeMachine.get(),
-  );
+  const [colorScheme] = useColorScheme();
 
-  return colorScheme === `isDark` || (colorScheme === `isSystem` && prefersDark);
+  return colorScheme === `dark` || (colorScheme === `system` && prefersDark);
 }

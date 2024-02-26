@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { joinClassNames } from '../mod.js';
+import { joinClassNames } from '../utils/join-class-names.js';
 
 export interface WtfLogoProps {
   className?: string | undefined;
